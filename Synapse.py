@@ -25,6 +25,8 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     :param post_freq: frequency of postsynaptic neuron id spikes is set to 'poisson'
     :return: Tuple (c, rho) where c is the time-evolution of calcium and rho is the time-evolution of the synapse
     '''
+
+    ### initializing containers and parameters ###
     D_ind = int(1 / 1000 * (D / dt))
 
     times = np.arange(0, t_end, dt)
@@ -32,9 +34,14 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     rho[0] = rho_init
     c = np.zeros(times.shape[0])
 
+    tau_sq = np.sqrt(tau)
+    theta_min = np.min((theta_p, theta_d))
+    eta = np.random.normal(size=times.shape[0])
+
     spikes_pre = np.zeros(times.shape[0])
     spikes_post = np.zeros(times.shape[0])
 
+    ### initializing pre- and postsynaptic spikes ###
     if spikes == '1hz_pre':
         pres_arr = np.zeros(int(60 * 1 / dt))
         for k, s in enumerate(pres_arr):
@@ -50,10 +57,7 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     else:
         return 0, 0
 
-    tau_sq = np.sqrt(tau)
-    theta_min = np.min((theta_p, theta_d))
-    eta = np.random.normal(size=times.shape[0])
-
+    ### run simulation ###
     for k, t in enumerate(times[:-1]):
         c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
         rho[k + 1] = rho[k] + (dt / tau) * (
