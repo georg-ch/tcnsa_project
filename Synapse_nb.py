@@ -1,9 +1,33 @@
 import numpy as np
+import numba as nb
+
+@nb.jit(nopython=True)
+def hs(x):
+    '''
+    numba-compatible implementation of heavyside function
+    :param x: argument (float)
+    :return: Theta(x)
+    '''
+    return x * (x > 0)
+
+@nb.jit(nopython=True)
+def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, theta_d, theta_min, sigma, dt, tau, tau_sq, tau_ca, c_pre, spikes_pre, spikes_post, D_ind, c_post):
+    '''
+    numbified differential equation-solver loop. This function should only be called by synapse, and therefore there is
+        no need to explain its parameters. It returns c(t), the calcium concentration and rho(t), the efficacy of
+        the synapse
+    '''
+    for k, t in enumerate(times[:-1]):
+        c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
+        rho[k + 1] = rho[k] + (dt / tau) * (-rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * hs(c[k] - theta_p) - gamma_d * rho[k] * hs(c[k] - theta_d) + sigma * tau_sq * np.sqrt(hs(c[k] - theta_min)) * eta[k])
+    return c, rho
 
 def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,
             rho_init, pre_freq=None, post_freq=None):
     '''
-    Temporal evolution of synaptic efficacy and calcium concentration
+    Temporal evolution of synaptic efficacy and calcium concentration. This function creates some containers and
+        calculates a few values that are passed to synapse_wrapped, which executes the loop within which
+        the differential equations associated with the synapse are solved.
     :param t_end: ending time of simulation in seconds (int or float)
     :param dt: stepping increment of simulation (float)
     :param tau: time constant of synapse (int or float)
@@ -36,7 +60,7 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     c = np.zeros(times.shape[0])
 
     tau_sq = np.sqrt(tau)
-    theta_min = np.min((theta_p, theta_d))
+    theta_min = np.min([theta_p, theta_d])
     eta = np.random.normal(size=times.shape[0])
 
     spikes_pre = np.zeros(times.shape[0])
@@ -59,11 +83,4 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
         return 0, 0
 
     ### run simulation ###
-    for k, t in enumerate(times[:-1]):
-        c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
-        rho[k + 1] = rho[k] + (dt / tau) * (
-                    -rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * np.heaviside(c[k] - theta_p,
-                                                                                                         0.5) - gamma_d *
-                    rho[k] * np.heaviside(c[k] - theta_d, 0.5) + sigma * tau_sq * np.sqrt(
-                np.heaviside(c[k] - theta_min, 0.5)) * eta[k])
-    return c, rho
+    return synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, theta_d, theta_min, sigma, dt, tau, tau_sq, tau_ca, c_pre, spikes_pre, spikes_post, D_ind, c_post)
