@@ -53,8 +53,8 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
         pre_prob = pre_freq * dt
         post_prob = post_freq * dt
 
-        spikes_pre = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - pre_prob, pre_prob])
-        spikes_post = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - post_prob, post_prob])
+        spikes_pre = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - pre_prob, pre_prob], replace=False)
+        spikes_post = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - post_prob, post_prob], replace=False)
     else:
         return 0, 0
 
