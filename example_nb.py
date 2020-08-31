@@ -8,7 +8,7 @@ dt = 0.0001
 
 tau = 150
 rho_star = 0.5
-sigma = 100#2.8284
+sigma = 70#2.8284
 
 gamma_p = 321.808
 gamma_d = 200
@@ -16,7 +16,7 @@ theta_p = 1.3
 theta_d = 1
 
 tau_ca = 0.02
-c_pre = 3
+c_pre = 1.3
 c_post = 2
 D = 13.7
 

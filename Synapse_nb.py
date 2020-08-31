@@ -8,7 +8,7 @@ def hs(x):
     :param x: argument (float)
     :return: Theta(x)
     '''
-    return x * (x > 0)
+    return x > 0
 
 @nb.jit(nopython=True)
 def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, theta_d, theta_min, sigma, dt, tau, tau_sq, tau_ca, c_pre, spikes_pre, spikes_post, D_ind, c_post):
@@ -23,6 +23,7 @@ def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, the
                             + gamma_p * (1 - rho[k]) * hs(c[k] - theta_p)
                             - gamma_d * rho[k] * hs(c[k] - theta_d)
                             + sigma * tau_sq * hs(c[k] - theta_min) * eta[k])
+
     return c, rho
 
 def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,
@@ -65,19 +66,18 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     tau_sq = np.sqrt(tau)
     theta_min = np.min([theta_p, theta_d])
     eta = np.random.normal(size=times.shape[0])
-
+    spikes_pre = np.zeros(times.shape[0])
+    spikes_post = np.zeros(times.shape[0])
     ### initializing pre- and postsynaptic spikes ###
     if spikes == '1hz_pre':
-        spikes_pre = np.zeros(times.shape[0])
-        spikes_post = np.zeros(times.shape[0])
+
         pres_arr = np.zeros(int(60 * 1 / dt))
         for k, s in enumerate(pres_arr):
             if k % 10000 == 0:
                 pres_arr[k] = 1
         spikes_pre[:int(60 * 1 / dt)] = pres_arr
     elif spikes == 'poisson' and pre_freq and post_freq:
-        spikes_pre = np.zeros(times.shape[0])
-        spikes_post = np.zeros(times.shape[0])
+
         pre_prob = pre_freq * dt
         post_prob = post_freq * dt
 
@@ -101,6 +101,8 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
         post_spike_idx = int(abs(time_start) / dt + dt_spike/1000.0/dt)
         spikes_pre[pre_spike_idx] = 1
         spikes_post[post_spike_idx] = 1
+    elif spikes == '1pre':
+        spikes_pre[int(0.001/dt)] = 1
     else:
         return 0, 0
 
