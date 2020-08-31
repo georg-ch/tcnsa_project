@@ -8,7 +8,7 @@ def hs(x):
     :param x: argument (float)
     :return: Theta(x)
     '''
-    return x * (x > 0)
+    return x > 0
 
 @nb.jit(nopython=True)
 def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, theta_d, theta_min, sigma, dt, tau, tau_sq, tau_ca, c_pre, spikes_pre, spikes_post, D_ind, c_post):
@@ -19,7 +19,7 @@ def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, the
     '''
     for k, t in enumerate(times[:-1]):
         c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
-        rho[k + 1] = rho[k] + (dt / tau) * (-rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * hs(c[k] - theta_p) - gamma_d * rho[k] * hs(c[k] - theta_d) + sigma * tau_sq * np.sqrt(hs(c[k] - theta_min)) * eta[k])
+        rho[k + 1] = rho[k] + (dt / tau) * (-rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * hs(c[k] - theta_p) - gamma_d * rho[k] * hs(c[k] - theta_d) + sigma * tau_sq * np.sqrt(hs(c[k] - theta_p) + hs(c[k] - theta_d)) * eta[k])
     return c, rho
 
 def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,

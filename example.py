@@ -8,7 +8,7 @@ dt = 0.0001
 
 tau = 150
 rho_star = 0.5
-sigma = 100#2.8284
+sigma = 70#2.8284
 
 gamma_p = 321.808
 gamma_d = 200

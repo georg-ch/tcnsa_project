@@ -36,7 +36,6 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     c = np.zeros(times.shape[0])
 
     tau_sq = np.sqrt(tau)
-    theta_min = np.min((theta_p, theta_d))
     eta = np.random.normal(size=times.shape[0])
 
     spikes_pre = np.zeros(times.shape[0])
@@ -63,7 +62,7 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
         c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
         rho[k + 1] = rho[k] + (dt / tau) * (
                     -rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * np.heaviside(c[k] - theta_p,
-                                                                                                         0.5) - gamma_d *
+                                                                                                         0) - gamma_d *
                     rho[k] * np.heaviside(c[k] - theta_d, 0.5) + sigma * tau_sq * np.sqrt(
-                np.heaviside(c[k] - theta_min, 0.5)) * eta[k])
+                np.heaviside(c[k] - theta_d, 0) + np.heaviside(c[k] - theta_p, 0)) * eta[k])
     return c, rho
