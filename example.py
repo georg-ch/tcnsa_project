@@ -36,4 +36,3 @@ ax.set_xlabel('time (s)')
 ax.set_ylabel('synaptic efficacly $\\rho$')
 
 plt.show()
-# yoni test git 

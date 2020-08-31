@@ -1,6 +1,7 @@
 import numpy as np
 
-def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,
+def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d,
+            theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,
             rho_init, pre_freq=None, post_freq=None):
     '''
     Temporal evolution of synaptic efficacy and calcium concentration
@@ -61,9 +62,8 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
     ### run simulation ###
     for k, t in enumerate(times[:-1]):
         c[k + 1] = c[k] - (dt / tau_ca) * c[k] + c_pre * spikes_pre[k - D_ind] + c_post * spikes_post[k]
-        rho[k + 1] = rho[k] + (dt / tau) * (
-                    -rho[k] * (1 - rho[k]) * (rho_star - rho[k]) + gamma_p * (1 - rho[k]) * np.heaviside(c[k] - theta_p,
-                                                                                                         0.5) - gamma_d *
-                    rho[k] * np.heaviside(c[k] - theta_d, 0.5) + sigma * tau_sq * np.sqrt(
-                np.heaviside(c[k] - theta_min, 0.5)) * eta[k])
+        rho[k + 1] = rho[k] + (dt / tau) * (-rho[k] * (1 - rho[k]) * (rho_star - rho[k])
+                            + gamma_p * (1 - rho[k]) * np.heaviside(c[k] - theta_p,1)
+                            - gamma_d * rho[k] * np.heaviside(c[k] - theta_d, 1)
+                            + sigma * tau_sq * np.heaviside(c[k] - theta_min, 1) * eta[k])
     return c, rho
