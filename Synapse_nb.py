@@ -79,6 +79,8 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
 
         spikes_pre = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - pre_prob, pre_prob])
         spikes_post = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - post_prob, post_prob])
+    elif spikes == '1pre':
+        spikes_pre[int(0.001/dt)] = 1
     else:
         return 0, 0
 
