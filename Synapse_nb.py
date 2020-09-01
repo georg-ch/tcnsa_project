@@ -27,7 +27,7 @@ def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, the
     return c, rho
 
 def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D, spikes,
-            rho_init, pre_freq=None, post_freq=None, dt_spike = None, time_start=-0.05):
+            rho_init, pre_freq=None, post_freq=None, dt_spike = None, time_start=-0.05, num_of_spike_pers = 0):
     '''
     Temporal evolution of synaptic efficacy and calcium concentration. This function creates some containers and
         calculates a few values that are passed to synapse_wrapped, which executes the loop within which
@@ -83,6 +83,24 @@ def synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d,
 
         spikes_pre = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - pre_prob, pre_prob])
         spikes_post = np.random.choice([0, 1], size=(times.shape[0]), p=[1 - post_prob, post_prob])
+
+    elif type(dt_spike) == int and num_of_spike_pers > 0 and not pre_freq == None:
+        times = np.arange(0, 1.0/pre_freq * num_of_spike_pers, dt)  # add 50 ms to simulation start
+        rho = np.zeros(times.shape[0])
+        rho[0] = rho_init
+        c = np.zeros(times.shape[0])
+
+        tau_sq = np.sqrt(tau)
+        theta_min = np.min([theta_p, theta_d])
+        eta = np.random.normal(size=times.shape[0])
+
+        spikes_pre = np.zeros(times.shape[0])
+        spikes_post = np.zeros(times.shape[0])
+        delay_idx = dt_spike / 1000 / dt
+        idx_freq = int(1.0 / pre_freq / dt) * 2
+        spikes_pre[np.arange(0, len(spikes_pre), idx_freq).astype(int)] = 1
+        spikes_post[np.arange(delay_idx, len(spikes_post), idx_freq).astype(int)] = 1
+
     elif type(dt_spike) == int:
         if dt_spike/1000.0 > t_end:
             return 0, 0 #this is a problem

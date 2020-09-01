@@ -6,16 +6,16 @@ import numpy as np
 t_end = 0.1
 dt = 0.00001
 
-tau = 150
+tau = 150 #sec
 rho_star = 0.5
-sigma = 100#2.8284
+sigma = 2.8284
 
 gamma_p = 321.808
 gamma_d = 200
 theta_p = 1.3
 theta_d = 1
 
-tau_ca = 0.02
+tau_ca = 0.02 #in sec
 c_pre = 1
 c_post = 2
 D = 13.7 #3 im ms
@@ -63,7 +63,8 @@ def fig_A(time_to_check = 20):
     ax[0].set_xticklabels(np.arange(-50, t_end*1000+1, 50).astype(int))
     ax[1].set_xticks(np.arange(-0.05, t_end+dt, 0.05))
     ax[1].set_xticklabels(np.arange(-50, t_end*1000+1, 50).astype(int))
-    plt.show()
+    plt.savefig("fig2a")
+    plt.close()
 
 def fig_B(d_time_leg=2):
     area_d = []
@@ -90,35 +91,39 @@ def fig_B(d_time_leg=2):
     ax2.set_ylim([0.4, 0.65])
     ax1.set_ylim([-0.02, 0.03])
     ax2.legend(loc='upper left')
+    ax1.set_ylabel("fraction of time above threshold")
+    ax1.set_xlabel("time leg delta t (ms)")
+    ax2.set_ylabel("position of minimum P")
+
     fig.tight_layout()
-    plt.show()
+    plt.savefig("fig2b")
+    plt.close()
 
 def fig_STDP_curves(d_time_leg=1):
-    area_d = []
-    area_p = []
+
+    change_in_p = []
     min_P = []
+
     time_legs = np.arange(-100, 100, d_time_leg)
-    theta_p=1.3
     dt=0.00001
+    # elif type(dt_spike) == int and num_of_spike_pers > 0 and not pre_freq == None:
+
     for dt_spike in time_legs:
         c, rho = synapse(max((abs(dt_spike)+50)/1000.0, 0.5), dt, tau, rho_star, sigma, gamma_p, gamma_d,
-                         theta_p, theta_d, tau_ca, c_pre, c_post, D, '', 1,
-                         pre_freq=0, post_freq=0, dt_spike=int(dt_spike), time_start=-max((abs(dt_spike)+50)/1000.0, 0.5))
-        R_d=(c>theta_d).sum()*dt * gamma_d
-        R_p = (c>theta_p).sum()*dt*gamma_p
-
-        min_P.append(R_p/ (R_d + R_p))
-
+                         theta_p, theta_d, tau_ca, c_pre, c_post, D, '', rho_init=1,
+                         pre_freq=1, dt_spike=int(dt_spike), time_start=-max((abs(dt_spike)+50)/1000.0, 0.5), num_of_spike_pers=60)
+        change_in_p.append(rho[-1]/rho[0])
+        R_d = (c > theta_d).sum() * dt
+        R_p =(c > theta_p).sum() * dt
+        min_P.append(R_p/ (R_d+ R_p))
     fig, ax1 = plt.subplots()
     ax1.axvline(0, ls='--', color='grey')
     ax1.axhline(1, ls='--', color='grey')
-    ax1.legend()
-    ax2 = ax1.twinx()
-    ax1.plot(time_legs, min_P, color="K", label="P_hat")
-    ax2.set_ylim([0.4, 0.65])
-    ax1.set_ylim([-0.02, 0.03])
-    ax2.legend(loc='upper left')
-    fig.tight_layout()
+    ax1.plot(time_legs, change_in_p, color="c", label="simulation")
+    ax1.plot(time_legs, min_P, color="m", label="P_hat")
+    # plt.savefig("fig2c")
+    # plt.close()
     plt.show()
-fig_A(20)
-fig_B(1)
+# fig_A(20)
+# fig_B(1)
+fig_STDP_curves()
