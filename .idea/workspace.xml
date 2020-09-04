@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="434a1911-49f9-4465-9aa9-71345dcbeeae" name="Default" comment="Added fig5">
-      <change afterPath="$PROJECT_DIR$/1C.py" afterDir="false" />
+    <list default="true" id="434a1911-49f9-4465-9aa9-71345dcbeeae" name="Default" comment="Added figure 1C">
+      <change afterPath="$PROJECT_DIR$/1B.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1A.py" beforeDir="false" afterPath="$PROJECT_DIR$/1A.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/5B.py" beforeDir="false" afterPath="$PROJECT_DIR$/5B.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,7 @@
       <recent name="C:\yoni\76908\tcnsa_project" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1C">
+  <component name="RunManager" selected="Python.1B">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -90,6 +88,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1A.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="1B" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="tcnsa_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1B.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -161,41 +180,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="example_nb" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tcnsa_project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example_nb.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.example_nb" />
       <item itemvalue="Python.5B" />
       <item itemvalue="Python.1A" />
       <item itemvalue="Python.1C" />
       <item itemvalue="Python.Synapse_nb" />
+      <item itemvalue="Python.1B" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.1B" />
+        <item itemvalue="Python.1A" />
         <item itemvalue="Python.1C" />
         <item itemvalue="Python.Synapse_nb" />
         <item itemvalue="Python.5B" />
-        <item itemvalue="Python.1A" />
-        <item itemvalue="Python.example_nb" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599240074939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added figure 1C">
+      <created>1599244915944</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599244915944</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,33 +238,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added fig5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added fig5" />
+    <MESSAGE value="Added figure 1C" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added figure 1C" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1897" height="341" key="GridCell.Tab.0.bottom" timestamp="1599244870622">
+    <state width="1897" height="341" key="GridCell.Tab.0.bottom" timestamp="1599247962690">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1599244870622" />
-    <state width="1897" height="341" key="GridCell.Tab.0.center" timestamp="1599244870622">
+    <state width="1897" height="341" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
+    <state width="1897" height="341" key="GridCell.Tab.0.center" timestamp="1599247962690">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1599244870622" />
-    <state width="1897" height="341" key="GridCell.Tab.0.left" timestamp="1599244870621">
+    <state width="1897" height="341" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
+    <state width="1897" height="341" key="GridCell.Tab.0.left" timestamp="1599247962689">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1599244870621" />
-    <state width="1897" height="341" key="GridCell.Tab.0.right" timestamp="1599244870622">
+    <state width="1897" height="341" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962689" />
+    <state width="1897" height="341" key="GridCell.Tab.0.right" timestamp="1599247962690">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1599244870622" />
+    <state width="1897" height="341" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
     <state x="464" y="190" width="992" height="733" key="SettingsEditor" timestamp="1599236884010">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="464" y="190" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1599236884010" />
-    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1599240094055">
+    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1599244925021">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2/0.30.1920.1050@0.30.1920.1050" timestamp="1599240094055" />
+    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2/0.30.1920.1050@0.30.1920.1050" timestamp="1599244925021" />
     <state x="765" y="471" width="389" height="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599236921290">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
