@@ -34,11 +34,11 @@ for i, c_pre in enumerate(c_pre_range):
     for j, c_post in enumerate(c_post_range):
         c, rho = synapse(t_end, dt, tau, rho_star, sigma, gamma_p, gamma_d, theta_p, theta_d, tau_ca, c_pre, c_post, D,
                          'poisson',
-                         rho_init, pre_freq=30, post_freq=30, dt_spike=None, time_start=-0.05)
+                         rho_init, pre_freq=60, post_freq=60, dt_spike=None, time_start=-0.05)
         rho_mat[i, j] = rho[-1]
 
 fig, axes = plt.subplots(1, 2, dpi=200)
-a = axes[1].imshow((w0 + rho_mat * (w1 - w0))/(w0 + rho_init*(w1 - w0)), origin='lower left', cmap='seismic', extent=[0, 1, 0, 1.5], aspect=1/1.5)
+a = axes[1].imshow((w0 + rho_mat * (w1 - w0))/(w0 + rho_init*(w1 - w0)), origin='lower left', cmap='seismic', extent=[0, 1, 0, 1.5], aspect=1/1.5, interpolation='quadric')
 plt.colorbar(a)
 axes[0].plot((w0 + rho_mat[int(c_pre_range.shape[0]*2/3), :] * (w1 - w0))/(w0 + rho_init*(w1 - w0)))
 plt.show()
