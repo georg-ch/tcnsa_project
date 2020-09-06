@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="434a1911-49f9-4465-9aa9-71345dcbeeae" name="Default" comment="Added figure 1C">
-      <change afterPath="$PROJECT_DIR$/1B.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="434a1911-49f9-4465-9aa9-71345dcbeeae" name="Default" comment="Added 1A" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +52,7 @@
       <recent name="C:\yoni\76908\tcnsa_project" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1B">
+  <component name="RunManager" selected="Python.5B">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -189,11 +186,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.5B" />
         <item itemvalue="Python.1B" />
         <item itemvalue="Python.1A" />
         <item itemvalue="Python.1C" />
         <item itemvalue="Python.Synapse_nb" />
-        <item itemvalue="Python.5B" />
       </list>
     </recent_temporary>
   </component>
@@ -222,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599244915944</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added 1A">
+      <created>1599248135418</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599248135418</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,33 +243,34 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added fig5" />
     <MESSAGE value="Added figure 1C" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added figure 1C" />
+    <MESSAGE value="Added 1A" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 1A" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1897" height="341" key="GridCell.Tab.0.bottom" timestamp="1599247962690">
+    <state width="1897" height="341" key="GridCell.Tab.0.bottom" timestamp="1599248121680">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
-    <state width="1897" height="341" key="GridCell.Tab.0.center" timestamp="1599247962690">
+    <state width="1897" height="341" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1599248121680" />
+    <state width="1897" height="341" key="GridCell.Tab.0.center" timestamp="1599248121680">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
-    <state width="1897" height="341" key="GridCell.Tab.0.left" timestamp="1599247962689">
+    <state width="1897" height="341" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1599248121680" />
+    <state width="1897" height="341" key="GridCell.Tab.0.left" timestamp="1599248121679">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962689" />
-    <state width="1897" height="341" key="GridCell.Tab.0.right" timestamp="1599247962690">
+    <state width="1897" height="341" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1599248121679" />
+    <state width="1897" height="341" key="GridCell.Tab.0.right" timestamp="1599248121680">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1897" height="341" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1599247962690" />
+    <state width="1897" height="341" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1599248121680" />
     <state x="464" y="190" width="992" height="733" key="SettingsEditor" timestamp="1599236884010">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="464" y="190" width="992" height="733" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1599236884010" />
-    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1599244925021">
+    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1599248147709">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2/0.30.1920.1050@0.30.1920.1050" timestamp="1599244925021" />
+    <state x="555" y="291" width="800" height="531" key="Vcs.Push.Dialog.v2/0.30.1920.1050@0.30.1920.1050" timestamp="1599248147709" />
     <state x="765" y="471" width="389" height="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599236921290">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>

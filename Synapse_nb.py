@@ -22,7 +22,7 @@ def synapse_wrapped(times, c, rho, eta, rho_star, gamma_p, gamma_d, theta_p, the
         rho[k + 1] = rho[k] + (dt / tau) * (-rho[k] * (1 - rho[k]) * (rho_star - rho[k])
                             + gamma_p * (1 - rho[k]) * hs(c[k] - theta_p)
                             - gamma_d * rho[k] * hs(c[k] - theta_d)
-                            + sigma * tau_sq * hs(c[k] - theta_min) * eta[k])
+                            + sigma * tau_sq * np.sqrt(hs(c[k] - theta_d) + hs(c[k] - theta_p)) * eta[k])
 
     return c, rho
 
